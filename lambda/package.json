@@ -1,0 +1,9 @@
+{
+  "name": "waitlist-handler",
+  "version": "1.0.0",
+  "description": "Secure waitlist form handler",
+  "main": "waitlist-handler.js",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.0.0"
+  }
+}

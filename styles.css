@@ -1,0 +1,1134 @@
+:root {
+    --black: #000000;
+    --primary-void: #0a0a0a;
+    --anjuna-blue: #0066ff;
+    --anjuna-red: #C41E3A;
+    --blue-light: #3385ff;
+    --blue-dark: #0052cc;
+    --red-light: #ff5470;
+    --tagline-platinum: #8C9BAB;
+    --accent-glow: rgba(0, 102, 255, 0.4);
+    --accent-subtle: rgba(0, 102, 255, 0.08);
+    --white: #ffffff;
+    --gray-100: #0a0a0a;
+    --gray-200: #1a1a1a;
+    --gray-300: #2a2a2a;
+    --gray-400: #666666;
+    --gray-500: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(0, 102, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 102, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -2;
+    animation: subtleMove 20s ease-in-out infinite;
+}
+
+@keyframes subtleMove {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(2px) translateY(-2px); }
+    50% { transform: translateX(-1px) translateY(1px); }
+    75% { transform: translateX(1px) translateY(-1px); }
+}
+
+/* Grid overlay */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: var(--anjuna-red);
+    text-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+}
+
+.logo-tagline {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--tagline-platinum);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-link {
+    color: var(--gray-400);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--white);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--anjuna-blue);
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0 3rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    width: 100%;
+    align-items: center;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+}
+
+/* Solution transition effect */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+    right: -2rem;
+    bottom: -2rem;
+    background: radial-gradient(circle at center, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    animation: solutionGlow 3s ease-in-out 1.5s forwards;
+}
+
+@keyframes solutionGlow {
+    to {
+        opacity: 1;
+    }
+}
+
+
+.hero-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    text-shadow: 0 4px 20px rgba(0, 102, 255, 0.15);
+    position: relative;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title-line {
+    overflow: hidden;
+    margin: 0.2rem 0;
+}
+
+.word {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: slideUp 0.8s ease forwards;
+}
+
+.word.highlight {
+    color: var(--anjuna-blue);
+    text-shadow: 0 0 30px var(--accent-glow);
+    position: relative;
+}
+
+.word.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--anjuna-blue), var(--blue-light));
+    border-radius: 2px;
+    animation: highlightGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes highlightGlow {
+    0% { box-shadow: 0 0 5px var(--anjuna-blue); }
+    100% { box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-subtle); }
+}
+
+.title-line:nth-child(1) .word { animation-delay: 0.1s; }
+.title-line:nth-child(2) .word { animation-delay: 0.2s; }
+.title-line:nth-child(3) .word { animation-delay: 0.3s; }
+.title-line:nth-child(4) .word { animation-delay: 0.4s; }
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gray-400);
+    margin-top: 2rem;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Hero Visual */
+.hero-visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+}
+
+.frustration-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+/* Problem Header */
+.frustration-intro {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-400);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.frustration-intro::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 2px;
+    background: var(--anjuna-blue);
+    border-radius: 1px;
+}
+
+/* Enhanced Problem List */
+.frustration-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+/* Strikethrough Problem Pattern */
+.frustration-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-300);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.03) 0%, rgba(0, 102, 255, 0.08) 100%);
+    border: 1px solid rgba(0, 102, 255, 0.1);
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+/* Animated strikethrough effect */
+.frustration-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--anjuna-blue) 0%, var(--blue-light) 50%, var(--anjuna-blue) 100%);
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(0, 102, 255, 0.4);
+}
+
+/* X icon with pulse effect */
+.frustration-item::before {
+    content: '⚠';
+    font-size: 1.1rem;
+    color: var(--anjuna-blue);
+    margin-right: 1rem;
+    font-weight: 900;
+    opacity: 0.7;
+    animation: warningPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(0, 102, 255, 0.3));
+}
+
+@keyframes warningPulse {
+    0%, 100% { 
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.frustration-text {
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.frustration-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--anjuna-red);
+    transform-origin: left center;
+    transform: translateY(-50%) scaleX(0);
+    box-shadow: 0 0 4px rgba(196, 30, 58, 0.5);
+    transition: all 0.6s ease-in-out;
+}
+
+.frustration-item:nth-child(1):hover .frustration-text::after {
+    width: 82%;
+    left: 12%;
+    transform: translateY(-50%) scaleX(1) rotate(1deg);
+}
+
+.frustration-item:nth-child(2):hover .frustration-text::after {
+    width: 78%;
+    left: 15%;
+    transform: translateY(-50%) scaleX(1) rotate(-1deg);
+}
+
+.frustration-item:nth-child(3):hover .frustration-text::after {
+    width: 86%;
+    left: 14%;
+    transform: translateY(-50%) scaleX(1) rotate(1deg);
+}
+
+/* Enhanced hover states */
+.frustration-item:hover {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 102, 255, 0.12) 100%);
+    transform: translateX(4px) scale(1.02);
+    box-shadow: 
+        0 8px 25px rgba(0, 102, 255, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 102, 255, 0.2);
+}
+
+
+.frustration-item:hover .frustration-text {
+    color: var(--anjuna-blue);
+    text-shadow: 0 0 8px rgba(0, 102, 255, 0.3);
+}
+
+.frustration-item:hover::before {
+    content: '✗';
+    color: var(--blue-light);
+    animation: none;
+    transform: scale(1.2);
+}
+
+
+
+/* Tired Message */
+.tired-message {
+    background: var(--anjuna-blue);
+    border-radius: 12px;
+    padding: 1.5rem 2.5rem;
+    text-align: center;
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+    max-width: 450px;
+    width: 100%;
+}
+
+
+.tired-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.tired-subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    opacity: 0.95;
+    margin-top: 0.3rem;
+}
+
+/* Access Section */
+.access-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--gray-200);
+}
+
+.access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-400);
+    line-height: 1.8;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.brand-message {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--gray-400);
+    line-height: 1.6;
+    font-style: italic;
+    margin-top: 1.5rem;
+    text-align: left;
+    max-width: 450px;
+    border-left: 3px solid var(--anjuna-blue);
+    padding-left: 1.5rem;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.feature-icon {
+    color: var(--anjuna-blue);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.feature span:last-child {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Form */
+.access-form {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 3rem;
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gray-400);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    padding: 1rem;
+    background: var(--black);
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--anjuna-blue);
+}
+
+.form-group input::placeholder {
+    color: var(--gray-400);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--anjuna-blue) 0%, var(--blue-light) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 1.2rem 2.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 25px rgba(0, 102, 255, 0.3),
+        0 3px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, var(--blue-light) 0%, var(--anjuna-blue) 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 35px rgba(0, 102, 255, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-arrow {
+    transform: translateX(2px);
+}
+
+.waitlist-count {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+}
+
+.count-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.count-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--anjuna-blue);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.count-growth {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue-light);
+    background: var(--accent-subtle);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.count-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.social-indicators {
+    margin-top: 1rem;
+}
+
+.recent-signups {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.signup-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--anjuna-blue);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.signup-dot:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.signup-dot:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.recent-text {
+    font-size: 0.7rem;
+    color: var(--gray-500);
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+/* Footer */
+.footer {
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--gray-200);
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    color: var(--anjuna-red);
+}
+
+.footer-tagline {
+    font-size: 0.75rem;
+    color: var(--tagline-platinum);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    font-weight: 400;
+}
+
+.footer-right {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-link {
+    color: var(--gray-400);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--anjuna-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-grid,
+    .access-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    
+    .hero-content {
+        order: 1;
+        align-items: center;
+        text-align: center;
+        padding-top: 0;
+    }
+    
+    .hero-visual {
+        order: -1;
+        align-items: center;
+        padding-top: 0;
+    }
+    
+    .frustration-container,
+    .tired-message {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .nav-container {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .logo-tagline {
+        font-size: 0.6rem;
+    }
+    
+    .nav-link {
+        font-size: 0.75rem;
+    }
+    
+    .hero-section {
+        padding: 5rem 0 3rem;
+        min-height: auto;
+    }
+    
+    .hero-grid {
+        gap: 3rem;
+    }
+    
+    .hero-content {
+        gap: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .frustration-container,
+    .tired-message {
+        max-width: 100%;
+    }
+    
+    .frustration-container {
+        padding: 2rem;
+    }
+    
+    .frustration-item {
+        font-size: 1rem;
+    }
+    
+    /* Remove strikethroughs and blue line on mobile */
+    .frustration-text::after {
+        display: none;
+    }
+    
+    .frustration-intro::before {
+        display: none !important;
+    }
+    
+    .hero-grid::after {
+        display: none !important;
+    }
+    
+    .tired-message {
+        padding: 1.2rem 2rem;
+    }
+    
+    .tired-text {
+        font-size: 1.4rem;
+    }
+    
+    .tired-subtitle {
+        font-size: 1rem;
+    }
+    
+    .access-section {
+        padding: 4rem 0;
+    }
+    
+    .access-grid {
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        max-width: none;
+    }
+    
+    .access-form {
+        padding: 2rem 1.5rem;
+        max-width: none;
+    }
+    
+    .footer-container {
+        padding: 0 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        font-size: 1rem;
+    }
+    
+    .footer-tagline {
+        font-size: 0.7rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.75rem;
+    }
+}
+
+/* Alternative Pain Point Patterns */
+
+/* Pattern 1: Loading state that never completes (conveys endless searching) */
+.frustration-item.loading-pattern {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    position: relative;
+    overflow: hidden;
+}
+
+.frustration-item.loading-pattern::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 102, 255, 0.1) 20%, 
+        rgba(0, 102, 255, 0.2) 50%, 
+        rgba(0, 102, 255, 0.1) 80%, 
+        transparent 100%
+    );
+    animation: endlessLoad 2.5s ease-in-out infinite;
+}
+
+@keyframes endlessLoad {
+    0% { width: 0%; }
+    70% { width: 85%; }
+    100% { width: 85%; }
+}
+
+/* Pattern 2: Shake effect for frustration */
+.frustration-item.shake-pattern:hover {
+    animation: frustrationShake 0.5s ease-in-out;
+}
+
+@keyframes frustrationShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* Pattern 3: Broken/error state */
+.frustration-item.error-pattern {
+    background: linear-gradient(135deg, 
+        rgba(0, 102, 255, 0.05) 0%, 
+        rgba(0, 102, 255, 0.1) 100%
+    );
+    border: 1px solid rgba(0, 102, 255, 0.2);
+    border-style: dashed;
+    position: relative;
+}
+
+.frustration-item.error-pattern::before {
+    content: '⚠';
+    color: var(--anjuna-blue);
+    animation: errorBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes errorBlink {
+    0%, 50% { opacity: 1; }
+    25%, 75% { opacity: 0.3; }
+}
+
+/* Enhanced Visual Hierarchy */
+
+/* Connecting line between problems and solution */
+.hero-grid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 4rem);
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, 
+        var(--anjuna-blue) 0%, 
+        rgba(0, 102, 255, 0.5) 100%
+    );
+    opacity: 0;
+    animation: connectLine 1s ease 2.5s forwards;
+    border-radius: 1px;
+}
+
+@keyframes connectLine {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Solution emphasis */
+.solution-emphasis {
+    position: relative;
+    overflow: hidden;
+}
+
+.solution-emphasis::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 102, 255, 0.1) 50%, 
+        transparent 100%
+    );
+    animation: solutionSweep 2s ease 3s forwards;
+}
+
+@keyframes solutionSweep {
+    to {
+        left: 100%;
+    }
+}
+
+/* Progressive reveal animation */
+.frustration-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealProblem 0.6s ease forwards;
+}
+
+.frustration-item:nth-child(1) { animation-delay: 0.2s; }
+.frustration-item:nth-child(2) { animation-delay: 0.4s; }
+.frustration-item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes revealProblem {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 
+MODERN UI/UX DESIGN RECOMMENDATIONS FOR PROBLEM/SOLUTION NARRATIVE
+
+1. CURRENT IMPLEMENTATION: Enhanced strikethrough pattern with warning icons
+   - Uses warning (⚠) icons that pulse, creating psychological urgency
+   - Animated strikethrough effect on hover reinforces "crossing out" problems
+   - Color transitions from gray to red emphasize the emotional journey
+
+2. ALTERNATIVE COLOR SCHEMES:
+   
+   Option A - Warmer, more empathetic approach:
+   --problem-primary: #ff6b35 (warm orange-red)
+   --problem-secondary: #f7931e (golden orange)
+   --solution-primary: #00d4aa (teal green)
+   
+   Option B - High-tech, digital frustration:
+   --problem-primary: #ff0040 (bright pink-red)
+   --problem-secondary: #ff4081 (accent pink)
+   --solution-primary: #00e676 (electric green)
+   
+   Option C - Professional, enterprise-focused:
+   --problem-primary: #d32f2f (deep red)
+   --problem-secondary: #ff5722 (deep orange)
+   --solution-primary: #1976d2 (professional blue)
+
+3. MICRO-INTERACTION PATTERNS:
+   - Loading bars that never complete (endless search frustration)
+   - Shake animations on hover (conveys user frustration)
+   - Glitch effects for digital pain points
+   - Progress indicators that get "stuck"
+
+4. PSYCHOLOGICAL DESIGN PRINCIPLES APPLIED:
+   - Loss Aversion: Problems shown as things being "lost" or "wasted"
+   - Contrast Effect: Dark problems vs bright solution
+   - Flow Interruption: Broken patterns for problems, smooth flow for solution
+   - Completion Bias: Incomplete loading states trigger discomfort
+
+5. ACCESSIBILITY CONSIDERATIONS:
+   - All animations respect prefers-reduced-motion
+   - Color-blind safe palette options
+   - Semantic markup for screen readers
+   - Sufficient contrast ratios maintained
+
+6. CONVERSION OPTIMIZATION:
+   - Progressive disclosure builds emotional investment
+   - Solution appears more valuable after problem emphasis
+   - Call-to-action gains psychological momentum from narrative flow
+*/

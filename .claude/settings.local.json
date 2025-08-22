@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(aws configure:*)",
+      "Bash(aws sts get-caller-identity:*)",
+      "WebFetch(domain:blackandred.io)",
+      "Bash(aws s3:*)",
+      "Bash(aws cloudfront:*)",
+      "Bash(curl:*)",
+      "Bash(aws route53 list-hosted-zones:*)",
+      "Bash(aws route53:*)",
+      "Bash(echo:*)",
+      "Bash(aws acm list-certificates:*)",
+      "Bash(aws acm request-certificate:*)",
+      "Bash(aws acm describe-certificate:*)",
+      "Bash(aws ses verify-email-identity:*)",
+      "Bash(zip:*)",
+      "Bash(aws iam attach-role-policy:*)",
+      "Bash(aws iam create-role:*)",
+      "Bash(aws iam create-policy:*)",
+      "Bash(aws lambda create-function:*)",
+      "Bash(aws apigateway create-rest-api:*)",
+      "Bash(aws apigateway create-resource:*)",
+      "Bash(aws apigateway put-method:*)",
+      "Bash(aws apigateway put-integration:*)",
+      "Bash(aws lambda:*)",
+      "Bash(aws apigateway create-deployment:*)",
+      "Bash(/Users/nagesh/Dev/Scripts/aws)",
+      "Bash(/Users/nagesh/Dev/Scripts/aws-switch.sh:*)",
+      "Bash(source:*)",
+      "Bash(export AWS_PROFILE=anjuna)",
+      "Bash(export AWS_PROFILE=company)",
+      "Bash(git config:*)",
+      "Bash(/Users/nagesh/Dev/Scripts/git-switch.sh)",
+      "Bash(/Users/nagesh/Dev/Scripts/git-switch.sh anjuna)",
+      "Bash(git init:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/nagesh/.aws",
+      "/Users/nagesh"
+    ]
+  }
+}
